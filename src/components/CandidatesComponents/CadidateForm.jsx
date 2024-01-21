@@ -18,6 +18,7 @@ const CandidateForm = () => {
     reactExperience: '',
     currentStatus: '',
     comment: '',
+    expectedSalary: ''
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -53,7 +54,7 @@ const CandidateForm = () => {
     try {
       const skillIds = selectedSkills.map(item => item.value).toString();
      
-      const resp = await saveCandidate({...formData, skillIds})
+      const resp = await saveCandidate({...formData, skillIds}, candidateId)
       navigate("/")
     } catch (error) {
       setError(error.message)
@@ -79,11 +80,12 @@ const CandidateForm = () => {
     const fetchCandidateData = async () => {
       try {
         const resp = await getCandidates(candidateId);
-        const { details: { name, email, phone, highestEducation, nodeExperience, reactExperience, currentStatus, comment } } = resp;
+        const { details: { name, email, phone, expectedSalary, highestEducation, nodeExperience, reactExperience, currentStatus, comment } } = resp;
         setFormData({
           name, 
           email,
           phone,
+          expectedSalary,
           highestEducation,
           nodeExperience,
           reactExperience,
@@ -117,6 +119,9 @@ const CandidateForm = () => {
         />
         <InputField label="Phone" type="text" name="phone"
           value={formData.phone} onChange={handleChange} required
+        />
+        <InputField label="Expected Salary(INR)" type="number" name="expectedSalary"
+          value={formData.expectedSalary} onChange={handleChange} required
         />
         <InputField label="Highest Education" type="text" name="highestEducation"
           value={formData.highestEducation} onChange={handleChange} required
@@ -170,7 +175,7 @@ const CandidateForm = () => {
             type="submit"
             className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
           >
-            {loading ? 'Please wait...' : `Add Candidate`}
+            {loading ? 'Please wait...' : candidateId ? `Update Candidate` : `Add Candidate`}
           </button>
         </div>
       </form>

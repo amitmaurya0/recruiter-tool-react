@@ -39,7 +39,7 @@ function CandidateDetails({  }) {
                         <FontAwesomeIcon icon={faEye} className="mr-2" />
                         View Candidate
                     </Link>
-                    <Link to="/" className="bg-blue-500 text-white px-4 py-2 rounded">
+                    <Link to={"/candidate/edit/"+candidateId} className="bg-blue-500 text-white px-4 py-2 rounded">
                         <FontAwesomeIcon icon={faEdit} className="mr-2" />
                         Edit Candidate
                     </Link>
@@ -52,6 +52,7 @@ function CandidateDetails({  }) {
                     <CandidateDetailsItem label="Name" value={candidateData.name} />
                     <CandidateDetailsItem label="Email" value={candidateData.email} />
                     <CandidateDetailsItem label="Phone" value={candidateData.phone} />
+                    <CandidateDetailsItem label="Expected Salary" value={`INR ${candidateData.expectedSalary}`} />
                     <tr>
                         <td className="py-2 px-4 font-semibold text-gray-600">Skills</td>
                         <td className="py-2 px-4">

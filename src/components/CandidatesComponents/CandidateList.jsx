@@ -41,6 +41,7 @@ function CandidateList() {
                     <th className="py-4 px-4 text-left">Name</th>
                     <th className="py-4 px-4 text-left">Email</th>
                     <th className="py-4 px-4 text-left">Phone</th>
+                    <th className="py-4 px-4 text-left">Expected Salary</th>
                     <th className="py-4 px-4 text-left">Status</th>
                     <th className="py-4 px-4 text-left">Action</th>
                     </tr>
@@ -55,6 +56,7 @@ function CandidateList() {
                                 <td className="py-4 px-4">{candidate.name}</td>
                                 <td className="py-4 px-4">{candidate.email}</td>
                                 <td className="py-4 px-4">{candidate.phone}</td>
+                                <td className="py-4 px-4">INR {candidate.expectedSalary}</td>
                                 <td className="py-4 px-4">{candidate.currentStatus}</td>
                                 <td className="py-4 px-4">
                                     <Link to={`candidate/edit/${candidate.id}`} className="bg-blue-500 text-white px-4 py-2 rounded mr-2">
