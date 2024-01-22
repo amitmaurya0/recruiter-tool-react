@@ -37,7 +37,7 @@ function CandidateDetails({  }) {
 
                     <Link to="/" className="bg-green-500 text-white px-4 py-2 rounded mr-2">
                         <FontAwesomeIcon icon={faEye} className="mr-2" />
-                        View Candidate
+                        All Candidates
                     </Link>
                     <Link to={"/candidate/edit/"+candidateId} className="bg-blue-500 text-white px-4 py-2 rounded">
                         <FontAwesomeIcon icon={faEdit} className="mr-2" />
